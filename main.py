@@ -2,7 +2,7 @@ import sys
 import pygame
 from pygame.locals import *
 from cube import Cube
-from rubik import Rubik
+from player import Rubik
 import random
 
 pygame.init()
