@@ -1,26 +1,27 @@
 import pygame
-import random
-
-colors = ["red", "yellow", "blue", "green"]
 
 class Cube(pygame.sprite.Sprite):
-    def __init__(self, pos):
+    def __init__(self):
         super().__init__()
-        self.size = 10
-        self.pos = pos
-        self.c = random.randint(0, len(colors) - 1)
+        self.size = 100
+        self.pos = [100, 100]
         self.rect = pygame.Rect(self.pos, (self.size, self.size))
-        self.COOLDOWN = 30
-        self.cooldown = self.COOLDOWN
 
     def draw(self, screen):
-        pygame.draw.rect(screen, colors[self.c], self.rect)
-
-    def boop(self):
-        if self.cooldown < 0:
-            self.c += 1
-            if self.c == len(colors):
-                self.c = 0
-            self.cooldown = self.COOLDOWN
-        else:
-            self.cooldown -= 1
+        pygame.draw.rect(screen, "red", self.rect)
+    
+    def move_right(self):
+        if self.rect.right < 600:
+            self.rect.centerx += 20
+        
+    def move_left(self):
+        if self.rect.left > 0:
+            self.rect.centerx -= 20
+    
+    def move_down(self):
+        if self.rect.bottom < 400:
+            self.rect.centery += 20
+    
+    def move_up(self):
+        if self.rect.top > 0:
+            self.rect.centery -= 20
